@@ -1,5 +1,5 @@
 {
-  "name": "package",
+  "name": "service-proxy",
   "tree": {
     "$path": "src"
   }
