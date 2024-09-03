@@ -1,9 +1,10 @@
 
 
 # Directories
-out/**
-Packages/**
-scripts/compile/__pycache__/**
+Packages
+node_modules
+build
+serve
 
 # Files
 sourcemap.json

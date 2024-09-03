@@ -1,0 +1,30 @@
+name: Validate Commit
+
+on:
+  push:
+
+jobs:
+
+  validate:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        scene: [main]
+        include:
+          - name: main
+
+    env:
+      ROJO_CONFIG: "dev.project.json"
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: ok-nick/setup-aftman@v0.4.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: generate sourcemap
+        run: rojo sourcemap "${{env.ROJO_CONFIG}}"" --output "sourcemap.json"
+
+      - name: validate project
+        run: sh scripts/validate.sh "${{env.ROJO_CONFIG}}""
