@@ -23,8 +23,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: generate sourcemap
-        run: rojo sourcemap "${{env.ROJO_CONFIG}}"" --output "sourcemap.json"
-
       - name: validate project
         run: sh scripts/validate.sh "${{env.ROJO_CONFIG}}""
