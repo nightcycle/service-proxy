@@ -5,8 +5,7 @@
 	"license": "Apache",
 	"author": "nightcycle <coyer@nightcycle.us>",
 	"repository": {
-	    "type": "git",
-	    "url": "git+https://github.com/nightcycle/service-proxy.git"
+"type": "git","url": "git+https://github.com/nightcycle/service-proxy.git"
 	},
 	"main": "src/init.luau",
 	"scripts": {

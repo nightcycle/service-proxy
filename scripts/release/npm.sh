@@ -23,6 +23,13 @@ goal_name_line="\"name\": \"@$REPO_OWNER/$REPO_NAME\","
 target_name_line=$(echo "$package_json_contents" | grep -F "\"name\": ")
 package_json_contents=$(echo "$package_json_contents" | awk -v target="$target_name_line" -v goal="$goal_name_line" '{gsub(target, goal)}1')
 
+# remove the line starting with "url":
+package_json_contents=$(echo "$package_json_contents" | sed '/"url":/d')
+goal_url_line="\"type\": \"git\",\"url\": \"git+https://github.com/$REPO_OWNER/$REPO_NAME.git\""
+target_url_line=$(echo "$package_json_contents" | grep -F "\"type\": \"git\"")
+package_json_contents=$(echo "$package_json_contents" | awk -v target="$target_url_line" -v goal="$goal_url_line" '{gsub(target, goal)}1')
+
+
 # swap out description
 goal_desc_line="\"description\": \"$REPO_DESC\","
 target_desc_line=$(echo "$package_json_contents" | grep -F "\"description\": ")
