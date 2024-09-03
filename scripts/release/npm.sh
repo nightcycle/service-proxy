@@ -36,7 +36,7 @@ target_desc_line=$(echo "$package_json_contents" | grep -F "\"description\": ")
 package_json_contents=$(echo "$package_json_contents" | awk -v target="$target_desc_line" -v goal="$goal_desc_line" '{gsub(target, goal)}1')
 
 # update file
-echo "$package_json_contents" > "project.json"
+echo "$package_json_contents" > "package.json"
 
 # read json file
 rojo_config_contents=$(cat "$ROJO_CONFIG")
