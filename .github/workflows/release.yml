@@ -51,7 +51,6 @@ jobs:
       # Checkout your Git repo
       - uses: actions/checkout@v2
 
-      # Install foreman and all foreman tools
       - uses: ok-nick/setup-aftman@v0.4.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -94,7 +93,6 @@ jobs:
       # Checkout your Git repo
       - uses: actions/checkout@v4
 
-      # Install foreman and all foreman tools
       - uses: ok-nick/setup-aftman@v0.4.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
