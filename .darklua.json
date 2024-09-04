@@ -5,10 +5,7 @@
 		   "current": {
 			  "name": "path",
 			  "sources": {
-				"@proj": "./src",
-				"@wally": "./Packages",
-				"@comp": "./src/Component",
-				"@hook": "./src/Hook"
+				"@proj": "./src"
 			}
 		   },
 		   "target": {
