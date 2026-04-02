@@ -1,6 +1,6 @@
 --!strict
 return function<T>(legacyServiceRedirect: () -> T, excludegetfenv: boolean?): T & {
-	getfenv: (...) -> {[strict]: any}
+	getfenv: (...) -> {[string]: any}
 }
 	-- Create the metatable
 	local meta = {}
