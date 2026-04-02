@@ -1,5 +1,5 @@
 --!strict
-return function<T>(legacyServiceRedirect: () -> T, excludeGetFEnv: boolean?): T & {
+return function<T>(legacyServiceRedirect: () -> T, excludegetfenv: boolean?): T & {
 	getfenv: (...) -> {[strict]: any}
 }
 	-- Create the metatable
@@ -21,7 +21,11 @@ return function<T>(legacyServiceRedirect: () -> T, excludeGetFEnv: boolean?): T 
 	end
 
 	function meta.getfenv(...)
-		return getfenv(...)
+		if excludegetfenv then
+			return {}
+		else
+			return getfenv(...)
+		end
 	end
 
 	-- Create the proxy table
