@@ -1,22 +1,25 @@
 --!strict
-return function<T>(legacyServiceRedirect: () -> T, excludegetfenv: boolean?): T & {
-	getfenv: (...) -> {[string]: any}
+return function<T>(
+	getService: () -> T,
+	excludegetfenv: boolean?
+): T & {
+	getfenv: (...any) -> { [string]: any },
 }
 	-- Create the metatable
 	local meta = {}
 	function meta:__index(key: any): any
-		local service = getService()
+		local service: any = getService()
 		return service[key]
 	end
 
 	function meta:__newindex(key: any, val: any?): nil
-		local service = getService()
+		local service: any = getService()
 		service[key] = val
 		return nil
 	end
 
 	function meta:__call(...): any
-		local service = getService()
+		local service: any = getService()
 		return service(...)
 	end
 
@@ -32,5 +35,5 @@ return function<T>(legacyServiceRedirect: () -> T, excludegetfenv: boolean?): T 
 	local proxy = {}
 	setmetatable(proxy, meta)
 
-	return (proxy :: any) :: T
+	return proxy :: any
 end
