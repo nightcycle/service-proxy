@@ -1,10 +1,5 @@
 --!strict
-return function<T>(
-	getService: () -> T,
-	excludegetfenv: boolean?
-): T & {
-	_getfenv: (...any) -> { [string]: any },
-}
+return function<T>(getService: () -> T, excludegetfenv: boolean?): T
 	-- Create the metatable
 	local meta = {}
 	function meta:__index(key: any): any
