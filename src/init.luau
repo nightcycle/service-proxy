@@ -3,7 +3,7 @@ return function<T>(
 	getService: () -> T,
 	excludegetfenv: boolean?
 ): T & {
-	getfenv: (...any) -> { [string]: any },
+	_getfenv: (...any) -> { [string]: any },
 }
 	-- Create the metatable
 	local meta = {}
@@ -23,7 +23,7 @@ return function<T>(
 		return service(...)
 	end
 
-	function meta.getfenv(...)
+	function meta._getfenv(...)
 		if excludegetfenv then
 			return {}
 		else
